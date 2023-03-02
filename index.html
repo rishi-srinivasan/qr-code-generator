@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="css-style.css">
+</head>
+<body>
+    <script type="text/javascript">
+        function showAlert()
+        {
+            var qrCodeValue = document.getElementById("qrvalue").value
+            var selectedValue = document.getElementById("dropdown").value
+            var qrGeneratedImg = document.getElementById("qrimage")
+            var alertMessage = "Value is empty"
+            var api = "https://chart.googleapis.com/chart?chf=bg,s,65432100&cht=qr&chs="
+            if(qrCodeValue!=="" && selectedValue=="url")
+            {
+                qrGeneratedImg.src = api+"300x300"+"&chl="+qrCodeValue
+            }
+            else
+            {
+                alert(alertMessage)
+            }
+        }
+    </script>
+    <div class="grid">
+        <h2 align="center">QR Code Generator</h2>
+        <center>
+            <img src="" id="qrimage">
+        </center>
+    </div>
+    <label >Enter the QR code below</label>
+    <br>
+    <select id = "dropdown">
+        <option value="url" selected>URL</option>
+        <option value="text">Text</option>
+        <option value="image">Image</option>
+    </select>
+    <textarea placeholder="Enter the QR code here" id="qrvalue"></textarea>
+    <!-- <div id="qrtext">Please enter the QR code below:</div> -->
+    <!-- <input type="text" id="qrcode"> -->
+    <!-- <textarea id="comment" rows="20" cols="50"></textarea> -->
+    <input type="submit" value="Generate" onclick="showAlert()">
+</body>
+</html>
+<!-- src="script.js" -->
